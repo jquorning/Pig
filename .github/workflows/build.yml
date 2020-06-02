@@ -33,18 +33,20 @@ jobs:
         sudo apt-get install libsdl2-ttf-dev
 
     - name: Checkout SDLAda
-      run: git clone https://github.com/Lucretia/sdlada.git
-
-    - name: Build SDLAda
       run: |
-        cd sdlada/build/gnat
+        git clone https://github.com/Lucretia/sdlada.git
         export SDL_PLATFORM=linux
         export SDL_MODE=release
-        gprbuild -p -gnat2012 -Ptools.gpr
-        ./gen/release/tools/gen_keyboard > gen/src/sdl-events-keyboards.ads
-        gprbuild -p -gnat2012 -Psdlada.gpr
-        gprinstall --prefix=/opt --build-name=release -p -f -Psdlada.gpr
-        cd
+
+    - name: Build SDLAda keyboard events
+      run: |
+        gprbuild -p -Psdlada/build/gnat/tools.gpr
+        sdlada/build/gnat/gen/release/tools/gen_keyboard > sdlada/src/sdl-events-keyboards.ads
+
+    - name: Build and install SDLAda
+      run: |
+        gprbuild -p -Psdlada/build/gnat/sdlada.gpr
+        gprinstall --prefix=/opt --build-name=release -p -f -Psdlada/build/gnat/sdlada.gpr
       
     # Runs a set of commands using the runners shell
     - name: Build Fixed Rate Pig
