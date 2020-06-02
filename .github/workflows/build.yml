@@ -46,4 +46,4 @@ jobs:
     - name: Build Fixed Rate Pig
       run: |
         cat /opt/share/gpr/sdlada.gpr
-        gprbuild -v pig.gpr -aP /opt/share/gpr -k -largs -lsdl2 -lsdl2_ttf -lsdl2_image
+        gprbuild -v pig.gpr -aP /opt/share/gpr -k -largs -lSDL2 -lSDL2_ttf -lSDL2_image
