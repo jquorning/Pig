@@ -41,8 +41,6 @@ jobs:
         export SDL_PLATFORM=linux
         export SDL_MODE=release
         gprbuild -p -Psdlada/build/gnat/tools.gpr
-        ls sdlada/build/gnat/gen/
-        #ls sdlada/build/gnat/gen/release/tools
         sdlada/build/gnat/gen/release/tools/gen_keyboard > sdlada/src/sdl-events-keyboards.ads
 
     - name: Build and install SDLAda
