@@ -41,7 +41,8 @@ jobs:
     - name: Build SDLAda keyboard events
       run: |
         gprbuild -p -Psdlada/build/gnat/tools.gpr
-        ./gen/release/tools/gen_keyboard > sdlada/src/sdl-events-keyboards.ads
+        ls sdlada/build/gnat/gen/release/tools
+        sdlada/build/gnat/gen/release/tools/gen_keyboard > sdlada/src/sdl-events-keyboards.ads
 
     - name: Build and install SDLAda
       run: |
