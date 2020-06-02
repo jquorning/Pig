@@ -39,6 +39,7 @@ jobs:
       run: |
         cd sdlada/build/gnat
         gprbuild -p -gnat2012 -XSDL_MODE=release -XSDL_PLATFORM=linux -Ptools.gpr
+        ./gen/release/tools/gen_keyboard > gen/src/sdl-events-keyboards.ads
         gprbuild -p -gnat2012 -XSDL_MODE=release -XSDL_PLATFORM=linux -Psdlada.gpr
         gprinstall --prefix=/opt --build-name=release -p -f -XSDL_MODE=release -XSDL_PLATFORM=linux -Psdlada.gpr
         cd
