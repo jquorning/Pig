@@ -25,11 +25,11 @@ jobs:
     - name: Get development tools
       run: |
         sudo apt-get update
-        sudo apt-get install gnat
-        sudo apt-get install gprbuild
-        sudo apt-get install libsdl2-dev
-        sudo apt-get install libsdl2-image-dev
-        sudo apt-get install libsdl2-ttf-dev
+        sudo apt-get install --quiet gnat
+        sudo apt-get install --quiet gprbuild
+        sudo apt-get install --quiet libsdl2-dev
+        sudo apt-get install --quiet libsdl2-image-dev
+        sudo apt-get install --quiet libsdl2-ttf-dev
 
     - name: Checkout SDLAda
       run: |
