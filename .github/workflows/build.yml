@@ -38,9 +38,7 @@ jobs:
 
     - name: Build SDLAda keyboard events
       run: |
-        export SDL_PLATFORM=linux
-        export SDL_MODE=release
-        gprbuild -p -Psdlada/build/gnat/tools.gpr
+        gprbuild -p -Psdlada/build/gnat/tools.gpr -XSDL_PLATFORM=linux -XSDL_MODE=release
         sdlada/build/gnat/gen/release/tools/gen_keyboard > sdlada/src/sdl-events-keyboards.ads
 
     - name: Build and install SDLAda
@@ -48,9 +46,9 @@ jobs:
         export SDL_PLATFORM=linux
         export SDL_MODE=release
         gprbuild -p -Psdlada/build/gnat/sdlada.gpr
-        gprinstall --prefix=/opt --build-name=release -p -f -Psdlada/build/gnat/sdlada.gpr
+        #gprinstall --prefix=/opt --build-name=release -p -f -Psdlada/build/gnat/sdlada.gpr
       
     # Runs a set of commands using the runners shell
     - name: Build Fixed Rate Pig
       run: |
-        gprbuild pig.gpr -aP /opt/share/gpr -k -largs -lSDL2 -lSDL2_ttf -lSDL2_image
+        gprbuild pig.gpr -aPsdlada/build/gnat -k -largs -lSDL2 -lSDL2_ttf -lSDL2_image
